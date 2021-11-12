@@ -15,8 +15,11 @@ const ManageOrders = () => {
     useEffect(() => {
         fetch('https://mysterious-ridge-83702.herokuapp.com/orders')
             .then(res => res.json())
-            .then(data => setAllOrders(data))
-        setOrdersLoading(false)
+            .then(data => {
+                setAllOrders(data)
+                setOrdersLoading(false)
+            })
+
     }, [clicked])
 
     //Delete user order
@@ -82,7 +85,7 @@ const ManageOrders = () => {
                                         <Button variant="contained" sx={{ mr: 1 }} disabled >Shipped</Button>
                                 }
 
-                                
+
                                 <Button variant="outlined" color="error" onClick={() => handleDelete(order._id)}> Delete </Button>
                             </Grid>
 

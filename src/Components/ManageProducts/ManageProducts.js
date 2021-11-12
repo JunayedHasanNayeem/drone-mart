@@ -5,17 +5,21 @@ import React, { useEffect, useState } from 'react';
 const ManageProducts = () => {
 
     const [products, setProducts] = useState([])
+    const [productsLoading, setProductsLoading] = useState(true)
     useEffect(() => {
-        fetch('http://mysterious-ridge-83702.herokuapp.com/products')
+        fetch('https://mysterious-ridge-83702.herokuapp.com/products')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                setProducts(data)
+                setProductsLoading(false)
+            })
     }, [])
 
     //Delete Products
     const handleDelete = (id) => {
         const proceedDelete = window.confirm('Are you sure you want to delete this product?');
         if (proceedDelete) {
-            fetch(`http://mysterious-ridge-83702.herokuapp.com/products/delete/${id}`, {
+            fetch(`https://mysterious-ridge-83702.herokuapp.com/products/delete/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -29,7 +33,7 @@ const ManageProducts = () => {
     }
 
     //Conditional Spinner
-    if (!products.length) {
+    if (productsLoading) {
         return (
             <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <CircularProgress />
