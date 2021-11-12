@@ -31,6 +31,8 @@ import ManageSearchOutlinedIcon from '@mui/icons-material/ManageSearchOutlined';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import ManageProducts from '../ManageProducts/ManageProducts';
+import AddchartIcon from '@mui/icons-material/Addchart';
 
 const drawerWidth = 240;
 
@@ -83,6 +85,12 @@ const Dashboard = (props) => {
                                 <ListItem button>
                                     <ManageSearchOutlinedIcon sx={{ mr: 2 }} />
                                     <ListItemText primary="Manage Orders" />
+                                </ListItem>
+                            </Link>
+                            <Link to={`${url}/manage-products`} style={{ textDecoration: 'none', color: '#000000' }}>
+                                <ListItem button>
+                                    <AddchartIcon sx={{ mr: 2 }} />
+                                    <ListItemText primary="Manage Products" />
                                 </ListItem>
                             </Link>
                             <Link to={`${url}/add-product`} style={{ textDecoration: 'none', color: '#000000' }}>
@@ -187,6 +195,9 @@ const Dashboard = (props) => {
                     </AdminRoute>
                     <AdminRoute path={`${url}/add-product`}>
                         <AddProduct></AddProduct>
+                    </AdminRoute>
+                    <AdminRoute path={`${url}/manage-products`}>
+                        <ManageProducts></ManageProducts>
                     </AdminRoute>
                     <Route path={`${url}/add-review`}>
                         <AddReview></AddReview>

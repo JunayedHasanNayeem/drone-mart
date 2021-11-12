@@ -33,10 +33,11 @@ const useFirebase = () => {
     const signUpUsingEmail = (email, password, fullName, redirect_uri, history) =>{
         createUserWithEmailAndPassword(auth, email, password)
         .then(result =>{
-            setUser(result.user)
+            const user = result.user
+            setUser(user)
             setUserName(fullName)
             setErrorMessage('');
-            saveUser(fullName, email, "POST")
+            saveUser(fullName, user.email, "POST")
             history.push(redirect_uri)
             window.location.reload();
         })

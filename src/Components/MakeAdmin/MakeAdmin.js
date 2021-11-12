@@ -18,7 +18,7 @@ const MakeAdmin = () => {
 
         e.preventDefault()
         document.addAdminForm.reset()
-        alert("Review added successfully!")
+        alert("New Admin added successfully!")
     }
     return (
         <Container>
