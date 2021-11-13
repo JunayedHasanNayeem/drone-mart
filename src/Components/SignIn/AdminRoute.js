@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth"
 
 
 const AdminRoute = ({ children, ...rest }) => {
-    const { user, isLoading, admin } = useAuth();
+    const { user, admin } = useAuth();
     //While collecting the user data, show spinner.
     if (!admin) {
         return (
@@ -13,8 +13,8 @@ const AdminRoute = ({ children, ...rest }) => {
                 <LinearProgress />
             </Box>
         )
-
     }
+    
     return (
         <Route
             {...rest}
